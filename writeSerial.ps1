@@ -4,6 +4,11 @@ param(
     $ToWrite
 )
 
+if ($null -eq $port) {
+    Write-Host "Port needs to be configured, ex:"
+    Write-Host '$port= new-Object System.IO.Ports.SerialPort COM3,9600,None,8,one'
+    return
+}
 
 $timout = 0
 do {
@@ -16,11 +21,11 @@ try {
     if ($res -eq $null) {
         $port.Write($ToWrite)
     }
+    else {
+        Write-Host $res
+    }
 }
 finally {
     $port.Close()
 }
 
-else {
-    Write-Host $res
-}

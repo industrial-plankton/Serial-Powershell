@@ -13,9 +13,6 @@ do {
             Write-Host -NoNewline $line
         }
     }
-    catch {
-        <#Do this if a terminating exception happens#>
-    }
     finally {
         $port.Close()
     }
